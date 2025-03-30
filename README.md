@@ -1,4 +1,4 @@
-#GitHub Pages :)
+# GitHub Pages :)
 https://little-star45.github.io/balancing-market-app-web/
 
 # React + Vite
