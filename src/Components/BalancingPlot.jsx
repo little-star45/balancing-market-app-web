@@ -19,12 +19,21 @@ const BalancingPlot = (props) => {
       // width: 600,
       // height: 400,
       xaxis: { 
-        title: { text: 'Electricity Demand [GWh]' },
-        rangemode: 'tozero'
+        title: { 
+          text: 'Electricity Demand [GWh]' },
+        side: 'right',
+        rangemode: 'tozero',
       },
       yaxis: { 
         title: { text: 'Generator Price [EUR/MWh]' },
         rangemode: 'tozero'
+      },
+      margin: {
+        l: 50,
+        r: 50,
+        b: 40,
+        t: 30,
+        pad: 4
       },
       shapes: [
      
@@ -63,7 +72,70 @@ const BalancingPlot = (props) => {
                 width: 0 // Brak linii obramowania
             }
           }
-          
+      ],
+      annotations: [
+        {
+          x: parseInt((pSn+pBn)/2),
+          y: maxLineHeight+8,
+          xref: 'x',
+          yref: 'y',
+          axref: 'x',
+          ayref: 'y',
+          text: `Excess demand ${Math.abs(pSn-pBn)} [GWh]`,
+          font: {
+            // family: 'Courier New, monospace',
+            // size: 16,
+            weight:700,
+            // color: '#010101',
+          },
+          showarrow: false,
+          xanchor: 'center',
+        },
+        {
+          x: pSn,
+          y: maxLineHeight+10,
+          xref: 'x',
+          yref: 'y',
+          axref: 'x',
+          ayref: 'y',
+          text: '',
+          showarrow: true,
+          arrowside:'start',
+          arrowhead: 3,
+          arrowwidth: 2,
+          xanchor: 'right',
+          ax: pBn,
+          ay: maxLineHeight+10,
+          font: {
+            // family: 'Courier New, monospace',
+            // size: 16,
+            color: '#010101',
+          },
+          textposition: 'bottom center',
+        },
+        // {
+        //   x: pBn, // Położenie na osi X
+        //   y: -0.2, // Ujemna wartość, aby umieścić tekst poniżej osi X
+        //   type: 'scatter',
+        //   mode: 'text',
+        //   showarrow: false,
+        //   yref: 'paper',
+        //   text: 'BAL', // Tekst adnotacji
+        //   textposition: 'bottom center', // Ustawienie pozycji tekstu
+        //   textfont: {
+        //       size: 12, // Rozmiar czcionki
+        //   },
+        // },
+        // {
+        //   x: 0.85,
+        //   y: -0.15,
+        //   xref: 'paper',
+        //   yref: 'paper',
+        //   text: 'Electricity Demand [GWh]',
+        //   showarrow: false,
+        //   xanchor: 'left',
+        // },
+        
       ]
   })
   },[LB, LS, pBn, pSn])
@@ -84,6 +156,12 @@ const BalancingPlot = (props) => {
     mode: 'lines+text',
     name: 'pBn',
     text: ['','BAL'],
+    textfont: {
+      // family: 'Courier New, monospace',
+      // size: 16,
+      weight:700,
+      // color: '#010101',
+    },
     textposition: 'top',
     },
     {
@@ -93,6 +171,12 @@ const BalancingPlot = (props) => {
     mode: 'lines+text',
     name: 'pSn',
     text: ['','DAM'],
+    textfont: {
+      // family: 'Courier New, monospace',
+      // size: 16,
+      weight:700,
+      // color: '#010101',
+    },
     textposition: 'top',
     },
 // {
