@@ -6,11 +6,21 @@ export const Context = styled.main`
   padding-top: 0.5rem;
   /* padding-bottom: 1rem; */
   /* margin-bottom:0; */
-  padding-left: 15rem;
-  padding-right: 15rem;
+  padding-left: 12rem;
+  padding-right: 12rem;
   /* position: relative; */
   /* padding: 3px;
   margin-bottom: 2px; */
+
+  @media (max-width: 1300px) {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  @media (max-width: 550px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 `;
 
 export const Container = styled.div`
