@@ -3,10 +3,11 @@ import Plotly from 'plotly.js-dist'
 
 const BalancingPlot = (props) => {
 
-  const {pBn, pSn, LS, LB} = props
+  const {pBn, pSn, LS, LB, energy, price} = props
 
   const [dataPlot, setDataPlot] = useState([])
   const [layout, setLayout] = useState([])
+  const [maxLineHeight, setMaxLineHeight] = useState(Math.max(...price))
 
   const plotRef = useRef(null);
 
@@ -56,8 +57,8 @@ const BalancingPlot = (props) => {
             x0: pSn<pBn?pBn:pSn, // Pozycja lewej linii
             x1: pSn<pBn?pSn:pBn, // Pozycja prawej linii
             y0: 0, // Dolna granica
-            y1: 30, // Górna granica
-            fillcolor: 'rgba(132, 255, 0, 0.2)', // Kolor wypełnienia
+            y1: maxLineHeight, // Górna granica
+            fillcolor: 'rgba(132, 255, 0, 0.15)', // Kolor wypełnienia
             line: {
                 width: 0 // Brak linii obramowania
             }
@@ -69,8 +70,8 @@ const BalancingPlot = (props) => {
 
   useEffect(()=>{
     setDataPlot([{
-    x: [0,5,10,15,20,25,30],
-    y: [2,2,10,17,27,32,37],
+    x: energy,
+    y: price,
     mode: 'lines+markers',
     type: 'scatter',
     marker: { color: 'red' },
@@ -78,17 +79,21 @@ const BalancingPlot = (props) => {
   },
   {
     x: [pBn, pBn],
-    y: [0, 30],
+    y: [0, maxLineHeight+5],
     type: 'scatter',
-    mode: 'lines',
-    name: 'pBn'
+    mode: 'lines+text',
+    name: 'pBn',
+    text: ['','BAL'],
+    textposition: 'top',
     },
     {
     x: [pSn, pSn],
-    y: [0, 30],
+    y: [0, maxLineHeight+5],
     type: 'scatter',
-    mode: 'lines',
-    name: 'pSn'
+    mode: 'lines+text',
+    name: 'pSn',
+    text: ['','DAM'],
+    textposition: 'top',
     },
 // {
 //     // show horizontal lines titles in this points

@@ -31,6 +31,8 @@ const Home = () => {
                 pSn={pSn}
                 LS={LS}
                 LB={LB}
+                energy={energy}
+                price={price}
                 />
             </div>
             <div className='row justify-content-center flex-column flex-nowrap' >
