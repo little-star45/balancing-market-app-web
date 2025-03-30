@@ -2,7 +2,7 @@ import { useState } from 'react';
 import BalancingPlot from './Components/BalancingPlot'
 import Sliders from './Components/Sliders';
 
-import { Context, Container, Container2 } from '../CommmonStyles';
+import { Context, Container, Container2, CustomTitle } from '../CommmonStyles';
 
 import 'bootstrap-css-only/css/bootstrap.min.css';
 
@@ -20,9 +20,7 @@ const Home = () => {
         <Container2>
             <div className='row justify-content-center'>
                 <div>
-                    <div className='row'> <h5>Balancing Market Auction</h5> </div>
-                    <div className='row'> <p>Market Clearing Price = {LB} [EUR]</p> </div>
-                    <div className='row'> <p>Balancing Market Price = {LS} [EUR]</p> </div>
+                    <div className='row'> <CustomTitle>Balancing Market Auction</CustomTitle> </div>
                 </div>
             </div>
             <div className='row justify-content-center' style={{height:'450px'}}>
@@ -35,7 +33,7 @@ const Home = () => {
                 price={price}
                 />
             </div>
-            <div className='row justify-content-center flex-column flex-nowrap' >
+            <div className='row mt-5 justify-content-center flex-column flex-nowrap' >
                 <Sliders
                 pBn={pBn}
                 pSn={pSn}
@@ -45,6 +43,8 @@ const Home = () => {
                 setPb={setLb}
                 energy={energy}
                 price={price}
+                LS={LS}
+                LB={LB}
                 /> 
             </div>
         </Container2>

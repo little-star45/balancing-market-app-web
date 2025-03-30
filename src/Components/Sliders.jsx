@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 const Sliders = (props)=>{
 
-    const {pBn, pSn, setPbN, setPsN, setLs, setPb, energy, price} = props
+    const {pBn, pSn, setPbN, setPsN, setLs, setPb, energy, price, LB, LS } = props
     
 
     const updateLine=(e, setFunc)=>{
@@ -15,8 +15,8 @@ const Sliders = (props)=>{
     return (
         <>
             <div className='row m-0 p-0 align-items-baseline'>
-              <div className='col-3 '><p>Demand Day-Ahead</p></div>
-              <div className='col-7'><input
+              <div className='col-2 '><p>Demand Day-Ahead</p></div>
+              <div className='col-5'><input
                   style={{width: '100%'}}
                   type="range" 
                   min="0" 
@@ -30,12 +30,13 @@ const Sliders = (props)=>{
                   }
                   }/>
                 </div>
-              <div className='col-2 '><p>{pSn} [GWh]</p></div>
+              <div className='col-1 '><p>{pSn} [GWh]</p></div>
+              <div className='col-4 pl-5'><p>Market Clearing Price = {LB} [EUR]</p></div>
             </div>
 
             <div className='row m-0 align-items-baseline'>
-              <div className='col-3'><p>Demand Balancing (pBn)</p></div>
-              <div className='col-7'><input
+              <div className='col-2'><p>Demand Balancing</p></div>
+              <div className='col-5'><input
                   style={{width: '100%'}}
                   type="range" 
                   min="0" 
@@ -49,7 +50,8 @@ const Sliders = (props)=>{
                     }
                   }
                   /></div>
-                <div className='col-2 '><p>{pBn} [GWh]</p></div>
+                <div className='col-1 '><p>{pBn} [GWh]</p></div>
+                <div className='col-4 pl-5'><p>Balancing Market Price = {LS} [EUR]</p> </div>
             </div>
           </>
     )

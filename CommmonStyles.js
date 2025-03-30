@@ -43,3 +43,10 @@ justify-content: center; */
 /* padding-bottom:  425px; */
 
 `
+
+export const CustomTitle = styled.div`
+
+    font-size: 36px;
+    font-weight: bold;
+
+`
