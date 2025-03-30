@@ -14,10 +14,17 @@ const BalancingPlot = (props) => {
     setLayout({
       autosize: true,
       responsive: true,
+      showlegend: false,
       // width: 600,
       // height: 400,
-      xaxis: { title: { text: 'Electricity Demand [GWh]' }},
-      yaxis: { title: { text: 'Generator Price [EUR/MWh]' }},
+      xaxis: { 
+        title: { text: 'Electricity Demand [GWh]' },
+        rangemode: 'tozero'
+      },
+      yaxis: { 
+        title: { text: 'Generator Price [EUR/MWh]' },
+        rangemode: 'tozero'
+      },
       shapes: [
      
           //Line Horizontal
@@ -42,10 +49,23 @@ const BalancingPlot = (props) => {
                 color: 'rgb(50, 96, 171)',
                 width: 2,
               }
-            },
+          },
+          // shadow background
+          {
+            type: 'rect',
+            x0: pSn<pBn?pBn:pSn, // Pozycja lewej linii
+            x1: pSn<pBn?pSn:pBn, // Pozycja prawej linii
+            y0: 0, // Dolna granica
+            y1: 30, // Górna granica
+            fillcolor: 'rgba(132, 255, 0, 0.2)', // Kolor wypełnienia
+            line: {
+                width: 0 // Brak linii obramowania
+            }
+          }
+          
       ]
   })
-  },[LB, LS])
+  },[LB, LS, pBn, pSn])
 
   useEffect(()=>{
     setDataPlot([{
