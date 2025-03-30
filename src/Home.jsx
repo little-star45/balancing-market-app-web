@@ -2,7 +2,7 @@ import { useState } from 'react';
 import BalancingPlot from './Components/BalancingPlot'
 import Sliders from './Components/Sliders';
 
-import { Context, Container } from '../CommmonStyles';
+import { Context, Container, Container2 } from '../CommmonStyles';
 
 import 'bootstrap-css-only/css/bootstrap.min.css';
 
@@ -16,37 +16,37 @@ const Home = () => {
   const [price, setPrice] = useState([2,2,10,17,27,32,37])
   
   return (
-      <Context>
-        <Container>
-          <div className='d-flex justify-content-center'>
-            <h5>Balancing Market Auction</h5>
-            <p>Market Clearing Price = {LB} [EUR]</p>
-            <p>Balancing Market Price = {LS} [EUR]</p>
-           </div>
-        <div className='row m-0 justify-content-center' >
-          <BalancingPlot
-          pBn={pBn}
-          pSn={pSn}
-          LS={LS}
-          LB={LB}
-          />
-        </div>
-        <div className='row m-0 justify-content-center' >
-         <Sliders
-          pBn={pBn}
-          pSn={pSn}
-          setPbN={setPbN}
-          setPsN={setPsN}
-          setLs={setLs}
-          setPb={setLb}
-          energy={energy}
-          price={price}
-          /> 
-        </div>
-        </Container>
-       
-          
-        </Context>
+    <Context>
+        <Container2>
+            <div className='row justify-content-center'>
+                <div>
+                    <div className='row'> <h5>Balancing Market Auction</h5> </div>
+                    <div className='row'> <p>Market Clearing Price = {LB} [EUR]</p> </div>
+                    <div className='row'> <p>Balancing Market Price = {LS} [EUR]</p> </div>
+                </div>
+            </div>
+            <div className='row justify-content-center' style={{height:'450px'}}>
+                <BalancingPlot
+                pBn={pBn}
+                pSn={pSn}
+                LS={LS}
+                LB={LB}
+                />
+            </div>
+            <div className='row justify-content-center flex-column' >
+                <Sliders
+                pBn={pBn}
+                pSn={pSn}
+                setPbN={setPbN}
+                setPsN={setPsN}
+                setLs={setLs}
+                setPb={setLb}
+                energy={energy}
+                price={price}
+                /> 
+            </div>
+        </Container2>
+    </Context>
   );
 }
 

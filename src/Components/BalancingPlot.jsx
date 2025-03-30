@@ -12,8 +12,9 @@ const BalancingPlot = (props) => {
 
   useEffect(()=>{
     setLayout({
-      width: 600,
-      height: 400,
+      autosize: true,
+      // width: 600,
+      // height: 400,
       xaxis: { title: { text: 'Electricity Demand [GWh]' }},
       yaxis: { title: { text: 'Generator Price [EUR/MWh]' }},
       shapes: [
@@ -93,9 +94,9 @@ const BalancingPlot = (props) => {
   },[dataPlot, layout])
 
     return (
-        <div style={{width:'100%', height:'100%'}}>
-            {plotRef&&<div ref={plotRef} style={{ width: '100%', height: '100%' }} />}
-        </div>
+        <>
+            {plotRef&&<div ref={plotRef} style={{width:'100%'}}/>}
+        </>
     );
 }
 

@@ -13,8 +13,8 @@ const Sliders = (props)=>{
     }
 
     return (
-        <div className='col'>
-            <div className='row d-flex justify-content-between align-items-baseline'>
+        <>
+            <div className='row mb-0 justify-content-between align-items-baseline' style={{width:'100%'}}>
               <p>Demand Day-Ahead (pSn)</p>
                 <input
                   style={{width: '60%'}}
@@ -32,7 +32,7 @@ const Sliders = (props)=>{
               <p>{pSn} [GWh]</p>
             </div>
 
-            <div className='row d-flex justify-content-between align-items-baseline'>
+            <div className='row mb-0 justify-content-between align-items-baseline'>
               <p>Demand Balancing (pBn)</p>
               <input 
                 style={{width: '60%'}}
@@ -50,7 +50,7 @@ const Sliders = (props)=>{
                 />
               <p>{pBn} [GWh]</p>
             </div>
-          </div>
+          </>
     )
 }
 
