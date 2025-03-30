@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 const Sliders = (props)=>{
 
-    const {pBn, pSn, setPbN, setPsN, setLs, setPb, energy, price, LS} = props
+    const {pBn, pSn, setPbN, setPsN, setLs, setPb, energy, price} = props
     
 
     const updateLine=(e, setFunc)=>{

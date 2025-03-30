@@ -3,7 +3,7 @@ import Plotly from 'plotly.js-dist'
 
 const BalancingPlot = (props) => {
 
-  const {title, pBn, pSn, LS, LB} = props
+  const {pBn, pSn, LS, LB} = props
 
   const [dataPlot, setDataPlot] = useState([])
   const [layout, setLayout] = useState([])
