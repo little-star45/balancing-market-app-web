@@ -33,7 +33,7 @@ const Home = () => {
                 LB={LB}
                 />
             </div>
-            <div className='row justify-content-center flex-column' >
+            <div className='row justify-content-center flex-column flex-nowrap' >
                 <Sliders
                 pBn={pBn}
                 pSn={pSn}

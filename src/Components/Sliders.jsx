@@ -14,10 +14,10 @@ const Sliders = (props)=>{
 
     return (
         <>
-            <div className='row mb-0 justify-content-between align-items-baseline' style={{width:'100%'}}>
-              <p>Demand Day-Ahead (pSn)</p>
-                <input
-                  style={{width: '60%'}}
+            <div className='row m-0 p-0 align-items-baseline'>
+              <div className='col-3 '><p>Demand Day-Ahead</p></div>
+              <div className='col-7'><input
+                  style={{width: '100%'}}
                   type="range" 
                   min="0" 
                   max="40"
@@ -29,26 +29,27 @@ const Sliders = (props)=>{
                     updateLine(parseInt(e.target.value), setLs)
                   }
                   }/>
-              <p>{pSn} [GWh]</p>
+                </div>
+              <div className='col-2 '><p>{pSn} [GWh]</p></div>
             </div>
 
-            <div className='row mb-0 justify-content-between align-items-baseline'>
-              <p>Demand Balancing (pBn)</p>
-              <input 
-                style={{width: '60%'}}
-                type="range" 
-                min="0" 
-                max="40"
-                step='1' 
-                value={pBn}
-                onChange={(e)=>
-                  {
-                    setPbN(parseInt(e.target.value))
-                    updateLine(parseInt(e.target.value), setPb)
+            <div className='row m-0 align-items-baseline'>
+              <div className='col-3'><p>Demand Balancing (pBn)</p></div>
+              <div className='col-7'><input
+                  style={{width: '100%'}}
+                  type="range" 
+                  min="0" 
+                  max="40"
+                  step='1' 
+                  value={pBn}
+                  onChange={(e)=>
+                    {
+                      setPbN(parseInt(e.target.value))
+                      updateLine(parseInt(e.target.value), setPb)
+                    }
                   }
-                }
-                />
-              <p>{pBn} [GWh]</p>
+                  /></div>
+                <div className='col-2 '><p>{pBn} [GWh]</p></div>
             </div>
           </>
     )

@@ -13,6 +13,7 @@ const BalancingPlot = (props) => {
   useEffect(()=>{
     setLayout({
       autosize: true,
+      responsive: true,
       // width: 600,
       // height: 400,
       xaxis: { title: { text: 'Electricity Demand [GWh]' }},
@@ -92,6 +93,10 @@ const BalancingPlot = (props) => {
     console.log('here')
     Plotly.react(plotRef.current, dataPlot, layout)
   },[dataPlot, layout])
+
+  window.onresize = function() {
+    Plotly.Plots.resize(plotRef.current);
+};
 
     return (
         <>
