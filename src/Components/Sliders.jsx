@@ -3,26 +3,19 @@ import React, { useEffect, useRef } from 'react';
 const Sliders = (props)=>{
 
     const {pBn, pSn, setPbN, setPsN, setLs, setPb, energy, price, LS} = props
+    
 
-    const updateLineDah=()=>{
-            energy.forEach((ele, idx) => {
-            if (ele >= pSn){
-               console.log(price[idx], typeof price[idx], typeof LS, LS)
-               setLs(price[idx])
-            }
-                
-        });
-
-        // for i in range(len(Energy)):
-        //  if Energy[i] >= PS_N:
-        //     LS = Price[i]
-
+    const updateLine=(e, setFunc)=>{
+        var idx = energy.findIndex(ele=> ele >= e)
+        if (idx!=-1){
+          setFunc(price[idx])
+        }
     }
 
     return (
         <div className='col'>
             <div className='row d-flex justify-content-between align-items-baseline'>
-              <p>Demand Day-Ahead</p>
+              <p>Demand Day-Ahead (pSn)</p>
                 <input
                   style={{width: '60%'}}
                   type="range" 
@@ -31,14 +24,16 @@ const Sliders = (props)=>{
                   step='1' 
                   value={pSn}
                   onChange={(e)=>
-                    {setPsN(e.target.value)
-                    updateLineDah(e)}
+                    {
+                    setPsN(parseInt(e.target.value))
+                    updateLine(parseInt(e.target.value), setLs)
+                  }
                   }/>
               <p>{pSn} [GWh]</p>
             </div>
 
             <div className='row d-flex justify-content-between align-items-baseline'>
-              <p>Demand Balancing</p>
+              <p>Demand Balancing (pBn)</p>
               <input 
                 style={{width: '60%'}}
                 type="range" 
@@ -46,7 +41,12 @@ const Sliders = (props)=>{
                 max="40"
                 step='1' 
                 value={pBn}
-                onChange={(e)=>setPbN(e.target.value)}
+                onChange={(e)=>
+                  {
+                    setPbN(parseInt(e.target.value))
+                    updateLine(parseInt(e.target.value), setPb)
+                  }
+                }
                 />
               <p>{pBn} [GWh]</p>
             </div>

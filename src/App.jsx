@@ -16,27 +16,36 @@ function App() {
   const [price, setPrice] = useState([2,2,10,17,27,32,37])
   
   return (
-      <div>
+      <div className='d-flex text-wrap'>
+        <div className='col'>
+           <div className='row'>
           <h5>{title}</h5>
+        </div>
+        <div className='row'>
           <BalancingPlot
           title={title}
           pBn={pBn}
           pSn={pSn}
           LS={LS}
           LB={LB}
-
           />
-          <Sliders
+        </div>
+        <div className='row'>
+         <Sliders
           pBn={pBn}
           pSn={pSn}
           setPbN={setPbN}
           setPsN={setPsN}
-          setLs={setPsN}
-          setPb={setPbN}
+          setLs={setLs}
+          setPb={setLb}
           energy={energy}
           price={price}
           LS={LS}
-          />
+          /> 
+        </div>
+        </div>
+       
+          
         </div>
   );
 }
