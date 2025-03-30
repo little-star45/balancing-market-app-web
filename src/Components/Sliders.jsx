@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Slider } from '../../CommmonStyles';
 
 const Sliders = (props)=>{
 
@@ -14,9 +15,10 @@ const Sliders = (props)=>{
 
     return (
         <>
-            <div className='row m-0 p-0 align-items-baseline'>
-              <div className='col-2 '><p>Demand Day-Ahead</p></div>
-              <div className='col-5'><input
+            <div className='row m-0 p-0 align-items-center'>
+              <div className='col-2 '><p style={{fontWeight: 'bold'}}>Demand Day-Ahead</p></div>
+              <div className='col-5'>
+                <Slider
                   style={{width: '100%'}}
                   type="range" 
                   min="0" 
@@ -34,9 +36,10 @@ const Sliders = (props)=>{
               <div className='col-4 pl-5'><p>Market Clearing Price = {LB} [EUR]</p></div>
             </div>
 
-            <div className='row m-0 align-items-baseline'>
-              <div className='col-2'><p>Demand Balancing</p></div>
-              <div className='col-5'><input
+            <div className='row m-0 align-items-center'>
+              <div className='col-2'><p style={{fontWeight: 'bold'}}>Demand Balancing</p></div>
+              <div className='col-5'>
+                <Slider
                   style={{width: '100%'}}
                   type="range" 
                   min="0" 

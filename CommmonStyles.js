@@ -50,3 +50,37 @@ export const CustomTitle = styled.div`
     font-weight: bold;
 
 `
+
+export const Slider = styled.input`
+    /* -webkit-appearance: none;
+    appearance: none; */
+
+    /* width: 100%; */
+    /* height: 10px; */
+    
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 23px;
+        height: 24px;
+        border: 0;
+        background-color:rgb(207, 25, 210);
+        border: 2px solid rgb(17, 25, 33);
+        cursor: pointer;
+    }
+    &::-webkit-slider-runnable-track{
+        width: 20px;
+        /* height: 20px; */
+        border-radius: 10px;
+        background-color:rgb(64, 146, 227);
+        border: 4px solid rgb(16, 72, 128);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+    }
+    /* &::-moz-range-thumb{
+        height: 20px;
+        border-radius: 10px 0 0 10px;
+        background-color: #2196F3;
+        border: 2px solid #1976D2;
+    } */
+`
