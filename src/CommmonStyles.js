@@ -168,7 +168,7 @@ export const PriceTag  = styled.span`
     background-color: ${props=>props.mainColor+'60'};
     margin-left:5px;
     margin-right:15px;
-    padding: 3px;
+    padding: 3px 5px;
     border-radius: 5px;
     /* font-weight: 500; */
 
@@ -177,4 +177,25 @@ export const PriceTag  = styled.span`
         box-shadow: 0 0 0 5px ${props=>props.mainColor+'20'};
         transition: .3s ease-in-out;
     }
+`
+
+export const Card = styled.div`
+
+  padding: 1rem;
+  /* box-shadow: 2px 2px 2px 2px #d8d7d5; */
+  width: 100%;
+  /* max-height: 800px; */
+  /* overflow-y: auto; */
+  /* position: relative; */
+  /* margin-bottom: 5vh; */
+  /* background-color: #f7f8fc; */
+  /* transition: all 0.3s ease; */
+  border: 1px solid;
+  border-radius: 0.375rem;
+  border-color: #d1d5db;
+
+  &:hover{
+    transform: scale(1.01);
+  }
+
 `

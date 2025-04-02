@@ -35,7 +35,12 @@ const Home = () => {
                 price={price}
                 />
             </div>
-            <div className='row mt-5 justify-content-center flex-column flex-nowrap' >
+            <div className='row'>
+                <div className='col-2' style={{paddingLeft:'50px'}}><b>Demand</b></div>
+                <div className='col-7'></div>
+                <div className='col-3'><b>Price</b></div>
+              </div>
+            <div className='row mt-1 justify-content-center flex-column flex-nowrap' >
                 <Sliders
                 pBn={pBn}
                 pSn={pSn}

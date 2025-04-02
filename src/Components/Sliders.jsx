@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Slider, SliderTick,DemandInput, PriceTag } from '../CommmonStyles';
+import { Slider, SliderTick,DemandInput, PriceTag, Card } from '../CommmonStyles';
 
 const Sliders = (props)=>{
 
@@ -15,8 +15,8 @@ const Sliders = (props)=>{
 
     return (
         <>
-            <div className='row m-0 mb-4 p-0 align-items-center'>
-              <div className='col-2 '><p style={{fontWeight: 'bold'}}>Demand Day-Ahead</p></div>
+            <div className='row m-0 mb-4 p-0 align-items-baseline'>
+              <div className='col-2 '><p>Day-Ahead</p></div>
               <div className='col-5'>
                 <div className='row'>
                   <Slider
@@ -102,11 +102,11 @@ const Sliders = (props)=>{
 
                   
                 </div>
-              <div className='col-4 pl-5 d-flex justify-content-end'><span>Market Clearing Price = </span> <PriceTag mainColor="#DA9833">{LS} [EUR]</PriceTag></div>
+              <div className='col-4 d-flex justify-content-start' style={{paddingLeft:'80px'}}><span  style={{paddingRight:'20px'}}>Market Clearing</span> <PriceTag mainColor="#DA9833">{LS} [EUR]</PriceTag></div>
             </div>
 
             <div className='row m-0 align-items-center'>
-              <div className='col-2'><p style={{fontWeight: 'bold'}}>Demand Balancing</p></div>
+              <div className='col-2'><p>Balancing</p></div>
               <div className='col-5'>
               <div className='row'>
                 <Slider
@@ -191,7 +191,7 @@ const Sliders = (props)=>{
 
                   
                 </div>
-                <div className='col-4 pl-5  d-flex justify-content-end'><span>Balancing Market Price = </span> <PriceTag mainColor="#3C70A4">{LB} [EUR]</PriceTag></div>
+                <div className='col-4 d-flex justify-content-start' style={{paddingLeft:'80px'}}><span style={{paddingRight:'10px'}}>Balancing Market</span> <PriceTag mainColor="#3C70A4">{LB} [EUR]</PriceTag></div>
             </div>
           </>
     )
