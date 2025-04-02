@@ -51,9 +51,9 @@ const BalancingPlot = () => {
           {
             type: 'line',
             x0: 0,
-            y0: LB,
+            y0: LS,
             x1: 30,
-            y1: LB,
+            y1: LS,
             line: {
               color: '#E5989B',
               width: 4,
@@ -63,9 +63,9 @@ const BalancingPlot = () => {
           {
               type: 'line',
               x0: 0,
-              y0: LS,
+              y0: LB,
               x1: 30,
-              y1: LS,
+              y1: LB,
               line: {
                 color: '#9578a4',
                 width: 4,
@@ -87,13 +87,43 @@ const BalancingPlot = () => {
       ],
       annotations: [
         {
+          x: Math.max(...energy)*1.05,
+          y: LB,
+          xref: 'x',
+          yref: 'y',
+          text: 'BMP',
+          showarrow: false,
+          font: {
+              size: 12,
+              color: '#9578a4',
+              weight: 'bold'
+          },
+          xanchor: 'right',
+          yanchor: 'middle'
+      },
+      {
+        x: Math.max(...energy)*1.05,
+        y: LS,
+        xref: 'x',
+        yref: 'y',
+        text: 'MCP',
+        showarrow: false,
+        font: {
+            size: 12,
+            color:'#E5989B' ,
+            weight: 'bold'
+        },
+        xanchor: 'right',
+        yanchor: 'middle'
+      },
+        {
           x: parseInt((pSn+pBn)/2),
           y: maxLineHeight+8,
           xref: 'x',
           yref: 'y',
           axref: 'x',
           ayref: 'y',
-          text: pSn>pBn?`Excess demand ${Math.abs(pSn-pBn)} [GWh]`:`Excess production ${Math.abs(pSn-pBn)} [GWh]`,
+          text: pSn>pBn?`Excess demand ${Math.abs(pSn-pBn)} [GWh]`: pSn===pBn?'':`Excess production ${Math.abs(pSn-pBn)} [GWh]`,
           font: {
             size: 16,
             weight:700,

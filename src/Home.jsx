@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import BalancingPlot from './Components/BalancingPlot'
 import Sliders from './Components/Sliders';
 import {MainContextProvider } from './Components/MainContext';

@@ -4,7 +4,7 @@ import { MainContext } from './MainContext';
 
 const Sliders = ()=>{
 
-    const {pBn, pSn, setPbN, setPsN, setLs, setPb, energy, price, LB, LS } = useContext(MainContext);
+    const {pBn, pSn, setPbN, setPsN, setLs, setLb, setPb, energy, price, LB, LS } = useContext(MainContext);
     
 
     const updateLine=(e, setFunc)=>{
@@ -123,7 +123,7 @@ const Sliders = ()=>{
                   onChange={(e)=>
                     {
                       setPbN(parseInt(e.target.value))
-                      updateLine(parseInt(e.target.value), setPb)
+                      updateLine(parseInt(e.target.value), setLb)
                     }
                   }
                   />
@@ -176,10 +176,10 @@ const Sliders = ()=>{
                           {
                             if(e.target.value!=""){
                               setPbN(parseFloat(e.target.value))
-                              updateLine(parseFloat(e.target.value), setPb) 
+                              updateLine(parseFloat(e.target.value), setLb) 
                             }else{
                               setPbN(0)
-                              updateLine(0, setPb)
+                              updateLine(0, setLb)
                             }
                             
                           }
