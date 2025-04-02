@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Slider, SliderTick } from '../CommmonStyles';
+import { Slider, SliderTick,DemandInput, PriceTag } from '../CommmonStyles';
 
 const Sliders = (props)=>{
 
@@ -24,7 +24,7 @@ const Sliders = (props)=>{
                   style={{width: '100%'}}
                   type="range" 
                   min="0" 
-                  max="40"
+                  max={Math.max(...energy)}
                   step='1' 
                   value={pSn}
                   onChange={(e)=>
@@ -39,7 +39,7 @@ const Sliders = (props)=>{
                   {Array.from({ length: 100 }, (_, i) => i).map((tick) => (
                       <SliderTick 
                       x={`${tick*1}%`}
-                      y="3"
+                      y="5"
                       width="1"
                       height="5"
                       style={{fill:'grey'}}
@@ -49,7 +49,7 @@ const Sliders = (props)=>{
                     {Array.from({ length: 11 }, (_, i) => i).map((tick) => (
                       <SliderTick 
                       x={tick===10?`99%`: `${tick*10}%`}
-                      y="3"
+                      y="5"
                       width="1"
                       height="10"
                       key={tick}>
@@ -67,11 +67,42 @@ const Sliders = (props)=>{
                       {tick}</text>
                   ))}
                   </svg> */}
+                  
                 </div>
                 </div>
 
-              <div className='col-1 '><p>{pSn} [GWh]</p></div>
-              <div className='col-4 pl-5'><p>Market Clearing Price = {LB} [EUR]</p></div>
+                <div className='col-1 '>
+                  <div className='row'>
+                    <div className='col-7'>
+                      <DemandInput
+                        borderColor="#DA9833"
+                        type='number' 
+                        value={pSn}
+                        max={Math.max(...energy)}
+                        min={0}
+                        onChange={(e)=>
+                          {
+                            if(e.target.value!=""){
+                              setPsN(parseFloat(e.target.value))
+                              updateLine(parseFloat(e.target.value), setLs) 
+                            }else{
+                              setPsN(0)
+                              updateLine(0, setLs)
+                            }
+                            
+                          }
+                        }
+                        />
+                    </div>
+                    <div className='col-5'>
+                      <p>[GWh]</p>
+                    </div>
+                  </div>
+
+
+                  
+                </div>
+              <div className='col-4 pl-5 d-flex justify-content-end'><span>Market Clearing Price = </span> <PriceTag mainColor="#DA9833">{LS} [EUR]</PriceTag></div>
             </div>
 
             <div className='row m-0 align-items-center'>
@@ -83,7 +114,7 @@ const Sliders = (props)=>{
                   style={{width: '100%'}}
                   type="range" 
                   min="0" 
-                  max="40"
+                  max={Math.max(...energy)}
                   step='1' 
                   value={pBn}
                   onChange={(e)=>
@@ -99,7 +130,7 @@ const Sliders = (props)=>{
                   {Array.from({ length: 100 }, (_, i) => i).map((tick) => (
                       <SliderTick 
                       x={`${tick*1}%`}
-                      y="3"
+                      y="5"
                       width="1"
                       height="5"
                       style={{fill:'grey'}}
@@ -109,7 +140,7 @@ const Sliders = (props)=>{
                     {Array.from({ length: 11 }, (_, i) => i).map((tick) => (
                       <SliderTick 
                       x={tick===10?`99%`: `${tick*10}%`}
-                      y="3"
+                      y="5"
                       width="1"
                       height="10"
                       key={tick}>
@@ -129,8 +160,38 @@ const Sliders = (props)=>{
                 </div>
                 </div>
                   
-                <div className='col-1 '><p>{pBn} [GWh]</p></div>
-                <div className='col-4 pl-5'><p>Balancing Market Price = {LS} [EUR]</p> </div>
+                <div className='col-1 '>
+                  <div className='row'>
+                    <div className='col-7'>
+                      <DemandInput
+                        borderColor="#3C70A4"
+                        type='number' 
+                        value={pBn}
+                        max={Math.max(...energy)}
+                        min={0}
+                        onChange={(e)=>
+                          {
+                            if(e.target.value!=""){
+                              setPbN(parseFloat(e.target.value))
+                              updateLine(parseFloat(e.target.value), setPb) 
+                            }else{
+                              setPbN(0)
+                              updateLine(0, setPb)
+                            }
+                            
+                          }
+                        }
+                        />
+                    </div>
+                    <div className='col-5'>
+                      <p>[GWh]</p>
+                    </div>
+                  </div>
+
+
+                  
+                </div>
+                <div className='col-4 pl-5  d-flex justify-content-end'><span>Balancing Market Price = </span> <PriceTag mainColor="#3C70A4">{LB} [EUR]</PriceTag></div>
             </div>
           </>
     )

@@ -16,24 +16,33 @@ const BalancingPlot = (props) => {
       autosize: true,
       responsive: true,
       showlegend: false,
+      font: {
+        family: 'Raleway, sans-serif',
+        size: 16,
+        // color: '#7f7f7f'
+      },
       // width: 600,
       // height: 400,
       xaxis: { 
         title: { 
-          text: 'Electricity Demand [GWh]' },
+          text: 'Electricity Demand [GWh]',
+          standoff: 20
+        },
         side: 'right',
         rangemode: 'tozero',
       },
       yaxis: { 
-        title: { text: 'Generator Price [EUR/MWh]' },
+        title: { text: 'Generator Price [EUR/GWh]' ,
+        standoff: 20
+        },
         rangemode: 'tozero'
       },
       margin: {
-        l: 50,
-        r: 50,
-        b: 40,
+        // l: 60,
+        // r: 50,
+        // b: 50,
         t: 30,
-        pad: 4
+        pad: 2
       },
       shapes: [
      
@@ -65,13 +74,13 @@ const BalancingPlot = (props) => {
           // shadow background
           {
             type: 'rect',
-            x0: pSn<pBn?pBn:pSn, // Pozycja lewej linii
-            x1: pSn<pBn?pSn:pBn, // Pozycja prawej linii
-            y0: 0, // Dolna granica
-            y1: maxLineHeight, // Górna granica
-            fillcolor: 'rgba(182, 195, 168, 0.15)', // Kolor wypełnienia
+            x0: pSn<pBn?pBn:pSn, // left line pos
+            x1: pSn<pBn?pSn:pBn, // right line pos
+            y0: 0, // bottom constrain
+            y1: maxLineHeight, // top constrain
+            fillcolor: 'rgba(182, 195, 168, 0.15)',
             line: {
-                width: 0 // Brak linii obramowania
+                width: 0 // without border
             }
           }
       ],
@@ -83,9 +92,8 @@ const BalancingPlot = (props) => {
           yref: 'y',
           axref: 'x',
           ayref: 'y',
-          text: `Excess demand ${Math.abs(pSn-pBn)} [GWh]`,
+          text: pSn>pBn?`Excess demand ${Math.abs(pSn-pBn)} [GWh]`:`Excess production ${Math.abs(pSn-pBn)} [GWh]`,
           font: {
-            // family: 'Courier New, monospace',
             size: 16,
             weight:700,
             // color: '#010101',
@@ -109,18 +117,14 @@ const BalancingPlot = (props) => {
           ax: pBn,
           ay: maxLineHeight+10,
           font: {
-            // family: 'Courier New, monospace',
-            // size: 16,
             color: '#010101',
           },
           textposition: 'bottom center',
         },
       ]
   })
-  },[LB, LS, pBn, pSn])
-
-  useEffect(()=>{
-    setDataPlot([{
+  
+  setDataPlot([{
     x: energy,
     y: price,
     mode: 'lines+markers',
@@ -137,15 +141,13 @@ const BalancingPlot = (props) => {
     x: [pBn, pBn],
     y: [0, maxLineHeight+3],
     type: 'scatter',
-    marker: { color: '#DA9833', symbol:'circle'  },
+    marker: { color: '#3C70A4', symbol:'circle'  },
     mode: 'lines+markers+text',
     name: 'pBn',
     text: ['','BAL'],
     textfont: {
-      // family: 'Courier New, monospace',
       size: 16,
       weight:700,
-      // color: '#010101',
     },
     textposition: 'top',
     line:{
@@ -157,15 +159,13 @@ const BalancingPlot = (props) => {
     x: [pSn, pSn],
     y: [0, maxLineHeight+3],
     type: 'scatter',
-    marker: { color: '#3C70A4', symbol:'circle'  },
+    marker: { color: '#DA9833', symbol:'circle'},
     mode: 'lines+markers+text',
     name: 'pSn',
     text: ['','DAM'],
     textfont: {
-      // family: 'Courier New, monospace',
       size: 16,
       weight:700,
-      // color: '#010101',
     },
     textposition: 'top',
     line:{
@@ -173,8 +173,9 @@ const BalancingPlot = (props) => {
       width:3
     }
     },
-])
-  }, [pBn, LS, LB, pSn])
+  ])
+  },[LB, LS, pBn, pSn])
+
 
   useEffect(()=>{
     if (plotRef.current){

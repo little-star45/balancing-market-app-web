@@ -2,7 +2,7 @@ import { useState } from 'react';
 import BalancingPlot from './Components/BalancingPlot'
 import Sliders from './Components/Sliders';
 
-import { Context, Container, Container2, CustomTitle } from './CommmonStyles';
+import { Main, Container, Container2, CustomTitle, GlobalStyle} from './CommmonStyles';
 
 import 'bootstrap-css-only/css/bootstrap.min.css';
 
@@ -16,7 +16,9 @@ const Home = () => {
   const [price, setPrice] = useState([2,2,10,17,27,32,37])
   
   return (
-    <Context>
+    <>
+    <GlobalStyle/>
+    <Main>
         <Container2>
             <div className='row justify-content-center'>
                 <div>
@@ -48,7 +50,8 @@ const Home = () => {
                 /> 
             </div>
         </Container2>
-    </Context>
+    </Main>
+    </>
   );
 }
 

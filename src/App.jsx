@@ -8,11 +8,13 @@ import 'bootstrap-css-only/css/bootstrap.min.css';
 function App() {
   
   return (
+    <>
     <Router>
       <Routes>
         <Route path='/balancing-market-app-web' element={<Home></Home>}></Route>
       </Routes>
     </Router>
+    </>
   );
 }
 
