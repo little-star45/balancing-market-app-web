@@ -2,7 +2,7 @@ import { useState } from 'react';
 import BalancingPlot from './Components/BalancingPlot'
 import Sliders from './Components/Sliders';
 
-import { Context, Container, Container2, CustomTitle } from '../CommmonStyles';
+import { Context, Container, Container2, CustomTitle } from './CommmonStyles';
 
 import 'bootstrap-css-only/css/bootstrap.min.css';
 
