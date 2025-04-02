@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { Slider, SliderTick,DemandInput, PriceTag, Card } from '../CommmonStyles';
+import { MainContext } from './MainContext';
 
-const Sliders = (props)=>{
+const Sliders = ()=>{
 
-    const {pBn, pSn, setPbN, setPsN, setLs, setPb, energy, price, LB, LS } = props
+    const {pBn, pSn, setPbN, setPsN, setLs, setPb, energy, price, LB, LS } = useContext(MainContext);
     
 
     const updateLine=(e, setFunc)=>{
@@ -102,7 +103,9 @@ const Sliders = (props)=>{
 
                   
                 </div>
-              <div className='col-4 d-flex justify-content-start' style={{paddingLeft:'80px'}}><span  style={{paddingRight:'20px'}}>Market Clearing</span> <PriceTag mainColor="#DA9833">{LS} [EUR]</PriceTag></div>
+              <div className='col-4 d-flex justify-content-start' style={{paddingLeft:'80px'}}>
+                <span  style={{paddingRight:'20px'}}>Market Clearing</span> 
+                <PriceTag mainColor="#DA9833">{LS} [EUR]</PriceTag></div>
             </div>
 
             <div className='row m-0 align-items-center'>
@@ -191,7 +194,9 @@ const Sliders = (props)=>{
 
                   
                 </div>
-                <div className='col-4 d-flex justify-content-start' style={{paddingLeft:'80px'}}><span style={{paddingRight:'10px'}}>Balancing Market</span> <PriceTag mainColor="#3C70A4">{LB} [EUR]</PriceTag></div>
+                <div className='col-4 d-flex justify-content-start' style={{paddingLeft:'80px'}}>
+                  <span style={{paddingRight:'10px'}}>Balancing Market</span> 
+                  <PriceTag mainColor="#3C70A4">{LB} [EUR]</PriceTag></div>
             </div>
           </>
     )

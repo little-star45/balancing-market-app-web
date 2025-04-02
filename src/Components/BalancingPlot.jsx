@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import Plotly from 'plotly.js-dist'
+import { MainContext } from './MainContext';
 
-const BalancingPlot = (props) => {
+const BalancingPlot = () => {
 
-  const {pBn, pSn, LS, LB, energy, price} = props
+  const {pBn, pSn, LS, LB, energy, price} = useContext(MainContext);
 
   const [dataPlot, setDataPlot] = useState([])
   const [layout, setLayout] = useState([])
