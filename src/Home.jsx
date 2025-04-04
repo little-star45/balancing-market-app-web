@@ -35,7 +35,7 @@ const Home = () => {
                 <div className='row'>
                     <div className='col-12'>
                        <CommonAcceptBtn 
-                       style={{width:'100%'}}
+                       style={{width:'100%', marginBottom:'20px'}}
                     onClick={()=>modalToggleFunc()}
                     >Edit Energy/Prices</CommonAcceptBtn> 
                     </div>
@@ -43,9 +43,9 @@ const Home = () => {
                 </div>
                     
                 <div className='row'>
-                    <div className='col-2' style={{paddingLeft:'50px'}}><b>Demand</b></div>
+                    <div className='col-2' style={{paddingLeft:'50px'}}><b>DEMAND</b></div>
                     <div className='col-7'></div>
-                    <div className='col-3'><b>Price</b></div>
+                    <div className='col-3'><b>PRICE</b></div>
                 </div>
                 <div className='row mt-1 justify-content-center flex-column flex-nowrap' >
                     <Sliders/>

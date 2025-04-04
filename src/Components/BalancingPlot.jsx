@@ -41,7 +41,7 @@ const BalancingPlot = () => {
       margin: {
         // l: 60,
         // r: 50,
-        // b: 70,
+        b: 60,
         t: 30,
         pad: 2
       },
@@ -52,7 +52,7 @@ const BalancingPlot = () => {
             type: 'line',
             x0: 0,
             y0: LS,
-            x1: 30,
+            x1: Math.max(...energy),
             y1: LS,
             line: {
               color: '#E5989B',
@@ -64,7 +64,7 @@ const BalancingPlot = () => {
               type: 'line',
               x0: 0,
               y0: LB,
-              x1: 30,
+              x1: Math.max(...energy),
               y1: LB,
               line: {
                 color: '#9578a4',

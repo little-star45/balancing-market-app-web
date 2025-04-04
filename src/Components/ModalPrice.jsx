@@ -17,6 +17,7 @@ import{
     ModalHeader,
     ModalFooter   
 } from 'reactstrap';
+import { notify_success } from './BasicToasts';
 
 let ModalPrice = (props) => {
 
@@ -37,8 +38,7 @@ let ModalPrice = (props) => {
 
         return (
             
-            <MyModal isOpen={true} toggle={toggle} centered={true} backdrop={true} 
-            >
+            <MyModal isOpen={true} toggle={toggle} centered={true} backdrop={true}>
 
                 <ModalHeader toggle={toggle} close={closeBtn}>
                     Add/Delete energy prices bids
@@ -157,7 +157,7 @@ let ModalPrice = (props) => {
                     }}>
                         Set Default
                     </AddButton>
-                    <AddButton color="warning" onClick={() => {
+                    <AddButton color="success" onClick={() => {
                         let stackedEnergy = {}
                         // create object key-price, value-energy
                         tempPrice.forEach((p, idx) => {
@@ -187,6 +187,7 @@ let ModalPrice = (props) => {
                         setEnergy([...energyPriceList.map((item) => item[1])])
                         setPrice([...energyPriceList.map((item) => parseFloat(item[0]))])
                         toggle()
+                        notify_success('Bids saved!')
                     }}>
                         Confirm
                     </AddButton>
