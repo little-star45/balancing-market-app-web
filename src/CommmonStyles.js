@@ -231,6 +231,21 @@ export const CommonAcceptBtn = styled.button`
 
 
 `
+export const CommonIconButton = styled(CommonAcceptBtn)`
+  margin: 0;
+  padding: 0.1em 0.5;
+  background-color: ${props=>props.buttoncolor};
+  
+  &:hover {
+    margin: 0;
+    padding: 0.1em 0.5;
+  }
+
+  &:disabled {
+    margin: 0;
+    padding: 0.1em 0.5;
+  }
+`
 
 export const CommonEditBtn = styled(CommonAcceptBtn)`
   

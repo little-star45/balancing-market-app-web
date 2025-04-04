@@ -1,11 +1,8 @@
 import styled from 'styled-components'
 
 import{
-    Button,
     Modal, 
-    ModalHeader,
     ModalBody,
-    ModalFooter,
     Input,
     
 } from 'reactstrap';
@@ -83,19 +80,3 @@ export const AddButton = styled(RemoveButton)`
   margin: 1em;
   padding: 0.25em 1em;
   }`
-
-export const BottomButtonDiv = styled.div`
-    order:2;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-`
-export const MySpan = styled.span`
-    margin-left:20px;
-    margin-top:5px;
-`
-export const TitleSpan = styled.span`
-    font-size:24px;
-    margin-bottom:15px;
-    font-weight: 500;
-`

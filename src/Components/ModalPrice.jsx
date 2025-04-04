@@ -1,7 +1,10 @@
 import React, {useState, useContext} from 'react';
-import { CommonAcceptBtn} from '../CommmonStyles';
+import { CommonAcceptBtn, CommonIconButton} from '../CommmonStyles';
 
 import { MainContext } from './MainContext';
+
+import PlusIcon from '../assets/icons/reshot-icon-plus.svg'
+import MinusIcon from '../assets/icons/reshot-icon-minus.svg'
 
 import {
     NumberInput,
@@ -38,63 +41,68 @@ let ModalPrice = (props) => {
             >
 
                 <ModalHeader toggle={toggle} close={closeBtn}>
-                    Modal Confirm
+                    Add/Delete energy prices bids
                 </ModalHeader>
 
                 <MainModalBodyDiv>
                     <>
-                    <div className='col-1'>
-                    <div className='row my-1'>Energy</div>
-                    <div className='row'>Price</div>
-                </div>    
+                    <div className='col'>
+                        <div className='row'>
+                            <div className='col-1 '>Energy</div>
+                            <div className='col-10 justify-content-around'>
+                                <div className='row'>
+                                    {tempEnergy.map((val,idx) => (
+                                <NumberInput
+                                bordercolor={'#a4a4a4f'}
+                                type='number'
+                                value={val}
+                                // style={{border:'2px solid grey', width:'40px', marginLeft:'5px', marginRight:'5px', borderRadius:'15%'}}
+                                onChange={(e) => {
+                                    const newValue = parseFloat(e.target.value)
+                                    setTempEnergy((prev) => {
+                                        const temp = [...prev]
+                                        temp[idx] = !isNaN(newValue) ? newValue : 0
+                                        return temp
+                                    })
+                                }}  
+                                />
+                                ))}
+                                </div>    
+                            </div>
+                            <div className='col-1'>
+                                <CommonIconButton buttoncolor='#8dd372'><img src={PlusIcon} width="24" height="24"/></CommonIconButton>
+                            </div>
+                        </div>
 
-                <div className='col-auto'>
-                    <div className='row flex-row justify-content-around my-1'>
-                        {tempEnergy.map((val,idx) => (
-                        <NumberInput
-                        bordercolor={'#a4a4a4f'}
-                        type='number'
-                        value={val}
-                        // style={{border:'2px solid grey', width:'40px', marginLeft:'5px', marginRight:'5px', borderRadius:'15%'}}
-                        onChange={(e) => {
-                            const newValue = parseFloat(e.target.value)
-                            setTempEnergy((prev) => {
-                                const temp = [...prev]
-                                temp[idx] = !isNaN(newValue) ? newValue : 0
-                                return temp
-                            })
-                        }}  
-                        />
-                        ))}
-                    </div>
-                    <div className='row flex-row row flex-row justify-content-around'>
-                        {tempPrice.map((val,idx) => (
-                        <NumberInput
-                        bordercolor={'#a4a4a4f'}
-                        type='number'
-                        value={val}
-                        // style={{border:'2px solid grey', width:'40px', marginLeft:'5px', marginRight:'5px', borderRadius:'15%'}}
-                        onChange={(e) => {
-                            const newValue = parseFloat(e.target.value)
-                            setTempPrice((prev) => {
-                                const temp = [...prev]
-                                temp[idx] = !isNaN(newValue) ? newValue : 0
-                                return temp
-                            })
-                        }}
-                        />
-                        ))}
-                    </div>
-                </div>    
+                        <div className='row'>
+                            <div className='col-1'>Price</div>
+                            <div className='col-10 justify-content-around'>
+                                <div className='row'>
+                                    {tempPrice.map((val,idx) => (
+                                    <NumberInput
+                                    bordercolor={'#a4a4a4f'}
+                                    type='number'
+                                    value={val}
+                                    // style={{border:'2px solid grey', width:'40px', marginLeft:'5px', marginRight:'5px', borderRadius:'15%'}}
+                                    onChange={(e) => {
+                                        const newValue = parseFloat(e.target.value)
+                                        setTempPrice((prev) => {
+                                            const temp = [...prev]
+                                            temp[idx] = !isNaN(newValue) ? newValue : 0
+                                            return temp
+                                        })
+                                    }}
+                                    />
+                                    ))}
+                                </div>
+                            </div>
+                            <div className='col-1'>
+                                <CommonIconButton buttoncolor='#e98989'><img src={MinusIcon} width="24" height="24"/></CommonIconButton>
+                            </div>
+                        </div>
 
-                <div className='col-1'>
-                    <div className='row my-1'>
-                        <CommonAcceptBtn>+</CommonAcceptBtn>
-                    </div>
-                    <div className='row'>
-                        <CommonAcceptBtn>-</CommonAcceptBtn>
-                    </div>
-                </div>
+                    </div> 
+
                     </>
                 
                 </MainModalBodyDiv>
@@ -102,6 +110,16 @@ let ModalPrice = (props) => {
                 <ModalFooter>
                     <AddButton color="success" onClick={() => toggle()}>
                         Cancel
+                    </AddButton>
+                    <AddButton color="success" onClick={() => {
+                        setTempEnergy([5, 5, 5, 5, 5, 5])
+                        setTempPrice([2, 10, 17, 27, 32, 37])
+                        setEnergyBids([5, 5, 5, 5, 5, 5])
+                        setPriceBids([2, 10, 17, 27, 32, 37])
+                        setEnergy([0, 5, 10, 15, 20, 25, 30])
+                        setPrice([2, 2, 10, 17, 27, 32, 37])
+                    }}>
+                        Set Default
                     </AddButton>
                     <AddButton color="warning" onClick={() => {
                         let stackedEnergy = {}

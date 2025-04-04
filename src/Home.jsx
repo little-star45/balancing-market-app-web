@@ -33,9 +33,13 @@ const Home = () => {
                 </div>
                   
                 <div className='row'>
-                    <CommonAcceptBtn 
+                    <div className='col-12'>
+                       <CommonAcceptBtn 
+                       style={{width:'100%'}}
                     onClick={()=>modalToggleFunc()}
-                    >Edit Energy/Prices</CommonAcceptBtn>
+                    >Edit Energy/Prices</CommonAcceptBtn> 
+                    </div>
+                    
                 </div>
                     
                 <div className='row'>
