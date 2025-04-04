@@ -153,6 +153,7 @@ export const DemandInput = styled.input`
         border-color: ${props=>props.bordercolor};
     }
 `
+
 export const PriceTag  = styled.span`
     background-color: ${props=>props.maincolor+'60'};
     margin-left:5px;

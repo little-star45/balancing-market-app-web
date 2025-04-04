@@ -1,5 +1,5 @@
 import React, { useContext} from 'react';
-import { Slider, SliderTick,DemandInput, PriceTag, Card } from '../CommmonStyles';
+import { Slider, SliderTick,DemandInput, PriceTag} from '../CommmonStyles';
 import { MainContext } from './MainContext';
 
 const Sliders = ()=>{

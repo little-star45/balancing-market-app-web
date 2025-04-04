@@ -26,25 +26,29 @@ export const MainModalBodyDiv = styled.div`
     /* padding-left:2vw; */
     padding-right:2vw;
 `
+export const NumberInput = styled(Input)`
+    border: 2px solid ${props=>props.bordercolor};
+    border-radius: 5px;
+    width:50px;
+    &::-webkit-outer-spin-button{
+        -webkit-appearance: none;
+        margin: 0;
+    }
 
-export const MyInput = styled(Input)`  
-    flex:2;
-    margin-bottom: 10px;
-    text-align: center;
-    margin-left: 5px;
+    &::-webkit-inner-spin-button{
+        -webkit-appearance: none;
+        margin: 0;
+    }
 
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-        display: none;}
-`;
+    -moz-appearance: textfield;
 
-export const OneColumnDiv = styled.div`
-    flex:2;
-    display: flex;
-    flex-direction: column;
-    margin-right:20px;
-    text-align:center;
-`;
+    &:hover{
+        border-color: ${props=>props.bordercolor};
+    }
+    &:active{
+        border-color: ${props=>props.bordercolor};
+    }
+`
 
 export const RemoveButton = styled.button`
     flex:1;

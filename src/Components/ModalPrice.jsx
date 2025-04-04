@@ -3,17 +3,12 @@ import { CommonAcceptBtn} from '../CommmonStyles';
 
 import { MainContext } from './MainContext';
 
-import { 
-    MyInput, 
-    MyModalBody,
-    RemoveButton, 
+import {
+    NumberInput,
     MyModal, 
     AddButton,
-    BottomButtonDiv,
     MainModalBodyDiv,
-    OneColumnDiv,
-    MySpan,
-    TitleSpan, } from '../Styles/ModalStyles';
+    } from '../Styles/ModalStyles';
 
 import{
     ModalHeader,
@@ -24,10 +19,10 @@ let ModalPrice = (props) => {
 
     const {toggle} = props
 
-    const {energy, price, setEnergy, setPrice} = useContext(MainContext);
+    const {setEnergy, setPrice, energyBids, setEnergyBids, priceBids, setPriceBids} = useContext(MainContext);
 
-    const [tempEnergy, setTempEnergy] = useState(JSON.parse(JSON.stringify(energy)))
-    const [tempPrice, setTempPrice] = useState(JSON.parse(JSON.stringify(price)))
+    const [tempEnergy, setTempEnergy] = useState(JSON.parse(JSON.stringify(energyBids)))
+    const [tempPrice, setTempPrice] = useState(JSON.parse(JSON.stringify(priceBids)))
 
     const closeBtn = (
         <button className="close" onClick={()=>{
@@ -56,10 +51,11 @@ let ModalPrice = (props) => {
                 <div className='col-auto'>
                     <div className='row flex-row justify-content-around my-1'>
                         {tempEnergy.map((val,idx) => (
-                        <input
+                        <NumberInput
+                        bordercolor={'#a4a4a4f'}
                         type='number'
                         value={val}
-                        style={{border:'2px solid grey', width:'40px', marginLeft:'5px', marginRight:'5px', borderRadius:'15%'}}
+                        // style={{border:'2px solid grey', width:'40px', marginLeft:'5px', marginRight:'5px', borderRadius:'15%'}}
                         onChange={(e) => {
                             const newValue = parseFloat(e.target.value)
                             setTempEnergy((prev) => {
@@ -73,10 +69,11 @@ let ModalPrice = (props) => {
                     </div>
                     <div className='row flex-row row flex-row justify-content-around'>
                         {tempPrice.map((val,idx) => (
-                        <input
+                        <NumberInput
+                        bordercolor={'#a4a4a4f'}
                         type='number'
                         value={val}
-                        style={{border:'2px solid grey', width:'40px', marginLeft:'5px', marginRight:'5px', borderRadius:'15%'}}
+                        // style={{border:'2px solid grey', width:'40px', marginLeft:'5px', marginRight:'5px', borderRadius:'15%'}}
                         onChange={(e) => {
                             const newValue = parseFloat(e.target.value)
                             setTempPrice((prev) => {
@@ -107,8 +104,34 @@ let ModalPrice = (props) => {
                         Cancel
                     </AddButton>
                     <AddButton color="warning" onClick={() => {
-                        setEnergy([...tempEnergy])
-                        setPrice([...tempPrice])
+                        let stackedEnergy = {}
+                        // create object key-price, value-energy
+                        tempPrice.forEach((p, idx) => {
+                            if (Object.prototype.hasOwnProperty.call(stackedEnergy, p)){
+                                stackedEnergy[p]+=tempEnergy[idx]
+                            }else{
+                                stackedEnergy[p]=tempEnergy[idx]
+                            }   
+                        })
+                        
+                        //trensfer object into array and sort
+                        let energyPriceList = Object.entries(stackedEnergy).sort((a, b) => a[0] - b[0])
+
+                        //save energy bids - not cumulative which one go to plot
+                        setEnergyBids([...energyPriceList.map((item) => item[1])])
+                        setPriceBids([...energyPriceList.map((item) => item[0])])
+
+                        //add first point
+                        energyPriceList.unshift([Math.min(...tempPrice),0])
+
+                        //prefix sum to calculate cummulatice demand
+                        for (let i = 1; i < energyPriceList.length; i++) {
+                            energyPriceList[i][1] += energyPriceList[i - 1][1];
+                        }
+                        
+                        //set price for plot
+                        setEnergy([...energyPriceList.map((item) => item[1])])
+                        setPrice([...energyPriceList.map((item) => parseFloat(item[0]))])
                         toggle()
                     }}>
                         Confirm
