@@ -3,12 +3,10 @@ import solarIcon from './assets/icons/reshot_icon_solar_power.svg'
 import solarIconWhite from './assets/icons/reshot_icon_solar_power_white.svg'
 
 export const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Boldonse&display=swap'); //title
   @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap'); //text
 
 `;
-
 
 export const Main = styled.main`
   font-family: "Raleway", sans-serif;
@@ -34,7 +32,6 @@ export const Container = styled.div`
 
     align-content:  center;
     margin-top: 0px;
-    /* padding-bottom:  625px; */
     
 `
 export const Container2 = styled.div`
@@ -128,17 +125,9 @@ export const Slider = styled.input`
 `;
 
 export const SliderTick = styled.rect`
-    /* display: flex;
-    justify-content: center;
-    width: 2px;
-    height: 10px; */
     background-color: #d3d3d3;
-    /* line-height: 50px; */
     color:rgb(91, 87, 87);
     outline: 0;
-    /* -webkit-transform: translateX(2px);
-    -moz-transform: translateX(2px);
-    transform: translateX(2px); */
 `
 
 export const DemandInput = styled.input`
