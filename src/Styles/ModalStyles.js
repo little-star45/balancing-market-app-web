@@ -8,6 +8,7 @@ import{
 } from 'reactstrap';
 
 export const MyModal = styled(Modal)`
+    font-family: "Raleway", sans-serif;
     max-width: 900px;
 `;
 

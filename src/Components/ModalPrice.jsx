@@ -48,8 +48,8 @@ let ModalPrice = (props) => {
                     <>
                     <div className='col'>
                         <div className='row'>
-                            <div className='col-1 '>Energy</div>
-                            <div className='col-10 justify-content-around'>
+                            <div className='col-3 '><b>Energy</b> [GWh]</div>
+                            <div className='col-8 justify-content-around'>
                                 <div className='row'>
                                     {tempEnergy.map((val,idx) => (
                                 <NumberInput
@@ -73,7 +73,7 @@ let ModalPrice = (props) => {
                                 <CommonIconButton 
                                     buttoncolor='#8dd372' 
                                     onClick={()=>{
-                                        if (tempEnergy.length<14){
+                                        if (tempEnergy.length<11){
                                             setTempEnergy((prev) => {
                                             const temp = [...prev]
                                             temp.push([0,0])
@@ -87,14 +87,14 @@ let ModalPrice = (props) => {
                                         }
                                         
                                     }}>
-                                        <img src={PlusIcon} width="24" height="24"/>
+                                        <img src={PlusIcon} width="24" height="24" style={{filter: 'invert(0.2)'}}/>
                                 </CommonIconButton>
                             </div>
                         </div>
 
                         <div className='row'>
-                            <div className='col-1'>Price</div>
-                            <div className='col-10 justify-content-around'>
+                            <div className='col-3'><b>Price</b> [EUR/GWh]</div>
+                            <div className='col-8 justify-content-around'>
                                 <div className='row'>
                                     {tempPrice.map((val,idx) => (
                                     <NumberInput
@@ -132,7 +132,7 @@ let ModalPrice = (props) => {
                                         }
                                         
                                     }}>
-                                        <img src={MinusIcon} width="24" height="24"/>
+                                        <img src={MinusIcon} width="24" height="24" style={{filter: 'invert(0.2)'}}/>
                                 </CommonIconButton>
                             </div>
                         </div>
@@ -198,7 +198,5 @@ let ModalPrice = (props) => {
             </MyModal>
         )
 }
-
-
 
 export default ModalPrice
