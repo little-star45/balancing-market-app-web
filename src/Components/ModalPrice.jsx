@@ -70,7 +70,25 @@ let ModalPrice = (props) => {
                                 </div>    
                             </div>
                             <div className='col-1'>
-                                <CommonIconButton buttoncolor='#8dd372'><img src={PlusIcon} width="24" height="24"/></CommonIconButton>
+                                <CommonIconButton 
+                                    buttoncolor='#8dd372' 
+                                    onClick={()=>{
+                                        if (tempEnergy.length<14){
+                                            setTempEnergy((prev) => {
+                                            const temp = [...prev]
+                                            temp.push([0,0])
+                                            return temp
+                                            })
+                                            setTempPrice((prev) => {
+                                                const temp = [...prev]
+                                                temp.push([0,0])
+                                                return temp
+                                            }) 
+                                        }
+                                        
+                                    }}>
+                                        <img src={PlusIcon} width="24" height="24"/>
+                                </CommonIconButton>
                             </div>
                         </div>
 
@@ -97,7 +115,25 @@ let ModalPrice = (props) => {
                                 </div>
                             </div>
                             <div className='col-1'>
-                                <CommonIconButton buttoncolor='#e98989'><img src={MinusIcon} width="24" height="24"/></CommonIconButton>
+                                <CommonIconButton 
+                                    buttoncolor='#e98989'
+                                    onClick={()=>{
+                                        if (0<tempEnergy.length){
+                                            setTempEnergy((prev) => {
+                                            const temp = [...prev]
+                                            temp.pop()
+                                            return temp
+                                            })
+                                            setTempPrice((prev) => {
+                                                const temp = [...prev]
+                                                temp.pop()
+                                                return temp
+                                            }) 
+                                        }
+                                        
+                                    }}>
+                                        <img src={MinusIcon} width="24" height="24"/>
+                                </CommonIconButton>
                             </div>
                         </div>
 
