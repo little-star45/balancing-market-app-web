@@ -95,8 +95,8 @@ const Sliders = ()=>{
                         }
                         />
                     </div>
-                    <div className='col-5'>
-                      <p>[GWh]</p>
+                    <div className='col-5 d-flex align-items-center'>
+                      [GWh]
                     </div>
                   </div>
 
@@ -186,8 +186,8 @@ const Sliders = ()=>{
                         }
                         />
                     </div>
-                    <div className='col-5'>
-                      <p>[GWh]</p>
+                    <div className='col-5 d-flex align-items-center'>
+                      [GWh]
                     </div>
                   </div>
 
