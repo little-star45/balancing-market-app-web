@@ -35,7 +35,7 @@ export const Container = styled.div`
     
 `
 export const Container2 = styled.div`
-    margin-top: 20px;
+    margin-top: 0px;
 
 `
 
@@ -71,25 +71,25 @@ export const Slider = styled.input`
         border-image-slice: 1;
         transition: .3s ease-in-out;
         margin-top: -12.5px; /* set margin to center thumb (height_thumb-2xheight)/2 */
-        border: 5px solid ${props=>props.sliderColor+'60'};
+        border: 5px solid ${props=>props.slidercolor+'60'};
         border-image-source: none;
         border-image-slice: 1;
     }
     &::-webkit-slider-thumb:hover {
-        border-color: ${props=>props.sliderColor};
+        border-color: ${props=>props.slidercolor};
         background-color:rgb(255, 255, 255);
-        box-shadow: 0 0 0 5px ${props=>props.sliderColor+'50'};
+        box-shadow: 0 0 0 5px ${props=>props.slidercolor+'50'};
         }
 
     &:active::-webkit-slider-thumb {
         background-image: url("${solarIconWhite}");
-        background-color:${props=>props.sliderColor};
-        box-shadow: 0 0 0 10px ${props=>props.sliderColor+'50'};
+        background-color:${props=>props.slidercolor};
+        box-shadow: 0 0 0 10px ${props=>props.slidercolor+'50'};
         }
     
     &::-webkit-slider-runnable-track{
         height: 10px;
-        background-color:${props=>props.sliderColor};
+        background-color:${props=>props.slidercolor};
         border-radius: 16px;
     }
     /* for Mozilla */
@@ -113,13 +113,13 @@ export const Slider = styled.input`
     }
 
     &:active::-moz-range-thumb {
-        background-color:${props=>props.sliderColor};
+        background-color:${props=>props.slidercolor};
         box-shadow: 0 0 0 15px rgba(255, 85, 0, .1);
     }
 
     &::-moz-range-track {
         height: 6px;
-        background-color:${props=>props.sliderColor};
+        background-color:${props=>props.slidercolor};
         border-radius: 16px;
     }
 `;
@@ -131,7 +131,7 @@ export const SliderTick = styled.rect`
 `
 
 export const DemandInput = styled.input`
-    border: 2px solid ${props=>props.borderColor+'90'};
+    border: 2px solid ${props=>props.bordercolor+'90'};
     border-radius: 5px;
     width:50px;
     /* &::-webkit-outer-spin-button{
@@ -147,14 +147,14 @@ export const DemandInput = styled.input`
     -moz-appearance: textfield; */
 
     &:hover{
-        border-color: ${props=>props.borderColor};
+        border-color: ${props=>props.bordercolor};
     }
     &:active{
-        border-color: ${props=>props.borderColor};
+        border-color: ${props=>props.bordercolor};
     }
 `
 export const PriceTag  = styled.span`
-    background-color: ${props=>props.mainColor+'60'};
+    background-color: ${props=>props.maincolor+'60'};
     margin-left:5px;
     margin-right:15px;
     padding: 3px 5px;
@@ -162,29 +162,133 @@ export const PriceTag  = styled.span`
     /* font-weight: 500; */
 
     &:hover{
-        background-color: ${props=>props.mainColor+'70'};
-        box-shadow: 0 0 0 5px ${props=>props.mainColor+'20'};
+        background-color: ${props=>props.maincolor+'70'};
+        box-shadow: 0 0 0 5px ${props=>props.maincolor+'20'};
         transition: .3s ease-in-out;
     }
 `
 
 export const Card = styled.div`
 
-  padding: 1rem;
+  padding: 0.5rem;
   /* box-shadow: 2px 2px 2px 2px #d8d7d5; */
   width: 100%;
   /* max-height: 800px; */
   /* overflow-y: auto; */
   /* position: relative; */
-  /* margin-bottom: 5vh; */
+  margin-bottom: 1vh;
   /* background-color: #f7f8fc; */
   /* transition: all 0.3s ease; */
   border: 1px solid;
   border-radius: 0.375rem;
   border-color: #d1d5db;
-
+/* 
   &:hover{
     transform: scale(1.01);
+  } */
+
+`
+
+export const CommonAcceptBtn = styled.button`
+  /* display: inline-block; */
+
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 1px solid rgb(216, 228, 238);;
+  border-radius: 10px;
+  display: block;
+  background-color:rgb(216, 228, 238);
+  color: black;
+  
+  &:focus {
+    outline: 0;
+  }
+  
+  &:hover {
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 1px solid rgb(108, 117, 125);
+  border-radius: 10px;
+  display: block;
+  background-color: rgb(108, 117, 125);
+  color: white;
+  }
+
+  &:disabled {
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 1px solid black;;
+  border-radius: 10px;
+  display: block;
+  background-color:white;
+  color: black;
+    cursor: not-allowed;
+  }
+
+
+`
+
+export const CommonEditBtn = styled(CommonAcceptBtn)`
+  
+  /* display: inline-block; */
+
+  /* font-size: 1em; */
+  margin: 0.25em;
+  /* padding: 0.25em 1em; */
+  /* border: 2px solid #5e616e; */
+  border-radius: 7px;
+  /* display: block; */
+  /* background-color: #5e616e; */
+  /* color: white; */
+  
+  
+
+  &:hover {
+    /* font-size: 1em; */
+  margin: 0.25em;
+  /* padding: 0.25em 1em; */
+  /* border: 2px solid black; */
+  border-radius: 7px;
+  /* display: block; */
+  /* background-color: black;
+  color: white; */
+  }
+
+`
+
+export const CommonDeclineBtn = styled(CommonAcceptBtn)`
+  
+  /* display: inline-block; */
+
+  /* font-size: 1em;
+  /* margin: 0.25em; */
+  padding: 0.25em 0.5em; 
+  /* border: 2px solid #DB6653; */
+
+  border: 2px solid black;
+  /* border-radius: 7px;
+  display: block; */
+
+  /* background-color: #DB6653; */
+  background-color: black;
+  /* color: white; */
+  
+  
+  &:hover {
+    /* font-size: 1em;
+  /* margin: 0.25em; */
+  padding: 0.25em 0.5em;
+  border: 2px solid #D2D2D6;
+  /* border: 2px solid #D4503D; */
+  /* border-radius: 7px; */
+  /* display: block;  */
+  background-color: #D2D2D6;
+
+  /* background-color: #D4503D; */
+  /* color: white; */
   }
 
 `

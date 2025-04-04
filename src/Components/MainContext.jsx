@@ -16,7 +16,8 @@ export const MainContextProvider = ({ children }) => {
             pSn, setPsN, 
             LS, setLs, 
             LB, setLb, 
-            energy, price }}>
+            energy, price,
+            setEnergy, setPrice }}>
                 
             {children}
         </MainContext.Provider>

@@ -41,7 +41,7 @@ const BalancingPlot = () => {
       margin: {
         // l: 60,
         // r: 50,
-        // b: 50,
+        // b: 70,
         t: 30,
         pad: 2
       },
@@ -205,7 +205,7 @@ const BalancingPlot = () => {
     }
     },
   ])
-  },[LB, LS, pBn, pSn])
+  },[LB, LS, pBn, pSn, energy])
 
 
   useEffect(()=>{
@@ -213,12 +213,10 @@ const BalancingPlot = () => {
     // var out = Plotly.validate(data, layout);
     // console.log(out)
       Plotly.newPlot(plotRef.current, dataPlot, layout)
-      console.log(plotRef)
     }
   },[])
 
   useEffect(()=>{
-    console.log('here')
     Plotly.react(plotRef.current, dataPlot, layout)
   },[dataPlot, layout])
 
@@ -228,7 +226,7 @@ const BalancingPlot = () => {
 
     return (
         <>
-            {plotRef&&<div ref={plotRef} style={{width:'100%'}}/>}
+            {plotRef&&<div ref={plotRef} style={{width:'100%', height:'auto'}}/>}
         </>
     );
 }

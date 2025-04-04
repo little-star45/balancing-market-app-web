@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext} from 'react';
 import { Slider, SliderTick,DemandInput, PriceTag, Card } from '../CommmonStyles';
 import { MainContext } from './MainContext';
 
@@ -21,7 +21,7 @@ const Sliders = ()=>{
               <div className='col-5'>
                 <div className='row'>
                   <Slider
-                  sliderColor="#DA9833"
+                  slidercolor="#DA9833"
                   style={{width: '100%'}}
                   type="range" 
                   min="0" 
@@ -76,7 +76,7 @@ const Sliders = ()=>{
                   <div className='row'>
                     <div className='col-7'>
                       <DemandInput
-                        borderColor="#DA9833"
+                        bordercolor="#DA9833"
                         type='number' 
                         value={pSn}
                         max={Math.max(...energy)}
@@ -105,7 +105,7 @@ const Sliders = ()=>{
                 </div>
               <div className='col-4 d-flex justify-content-start' style={{paddingLeft:'80px'}}>
                 <span  style={{paddingRight:'20px'}}>Market Clearing</span> 
-                <PriceTag mainColor="#DA9833">{LS} [EUR]</PriceTag></div>
+                <PriceTag maincolor="#DA9833">{LS} [EUR]</PriceTag></div>
             </div>
 
             <div className='row m-0 align-items-center'>
@@ -113,7 +113,7 @@ const Sliders = ()=>{
               <div className='col-5'>
               <div className='row'>
                 <Slider
-                  sliderColor="#3C70A4"
+                  slidercolor="#3C70A4"
                   style={{width: '100%'}}
                   type="range" 
                   min="0" 
@@ -167,7 +167,7 @@ const Sliders = ()=>{
                   <div className='row'>
                     <div className='col-7'>
                       <DemandInput
-                        borderColor="#3C70A4"
+                        bordercolor="#3C70A4"
                         type='number' 
                         value={pBn}
                         max={Math.max(...energy)}
@@ -196,7 +196,7 @@ const Sliders = ()=>{
                 </div>
                 <div className='col-4 d-flex justify-content-start' style={{paddingLeft:'80px'}}>
                   <span style={{paddingRight:'10px'}}>Balancing Market</span> 
-                  <PriceTag mainColor="#3C70A4">{LB} [EUR]</PriceTag></div>
+                  <PriceTag maincolor="#3C70A4">{LB} [EUR]</PriceTag></div>
             </div>
           </>
     )
