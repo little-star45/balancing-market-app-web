@@ -1,7 +1,9 @@
 # GitHub Pages :)
 https://little-star45.github.io/balancing-market-app-web/
 
-![image](https://github.com/user-attachments/assets/ecfd5583-8110-4f8a-afa6-566bd9b17aac)
+![image](https://github.com/user-attachments/assets/5524785d-7dce-47d5-beba-778e1bbc1653)
+
+![image](https://github.com/user-attachments/assets/5df01c4a-95fa-41c1-91bb-7b487019b85d)
 
 In Poland we can distinguish several types of energy markets, depending on the required date of delivery. The energy price set on the Day-Ahead or Intraday Market is rarely the final price. In the 24 hours between the conclusion of a contract on the Polish Power Exchange, the energy demand profile can change completely. Depending on whether there is too much ("down-regulation") or too
 little ("up-regulation") energy on the market, its final price is higher or lower than previously set.
